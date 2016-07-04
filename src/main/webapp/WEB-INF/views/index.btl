@@ -1,0 +1,61 @@
+<%
+include("/common/header.btl"){}
+%>
+<div class="bodyontainer">
+    <div class="row">
+        <div class="col s12 m9">
+            <ul id="artricleList" class="collection">
+                <template v-for="item in items">
+                    <li class="collection-item avatar">
+                        <img src="images/yuna.jpg" alt="" class="circle">
+                        <span class="title">Title</span>
+                        <p>First Line <br>
+                            Second Line
+                        </p>
+                        <a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a>
+                    </li>
+                </template>
+            </ul>
+            <!--<ul id="artricleList" class="collapsible collapsible-accordion" data-collapsible="accordion">-->
+            <!--<template v-for="item in items">-->
+            <!--<li>-->
+            <!--<div class="collapsible-header"><i class="material-icons">filter_drama</i>{{item.title}}</div>-->
+            <!--<div class="collapsible-body"><p>{{item.contextpath}}</p></div>-->
+            <!--</li>-->
+            <!--</template>-->
+            <!--</ul>-->
+        </div>
+        <div class="col s6 m3">
+            <div class="card  darken-1">
+                <div class="card-content">
+                    <span class="card-title">Card Title</span>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                        I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div class="card-action">
+                    <a href="#">This is a link</a>
+                    <a href="#">This is a link</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%
+include("/common/footer.btl"){}
+%>
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            url: "/home/findAriticleByPage",
+            type: 'post',
+            success: function (result) {
+                var artricleList = new Vue({
+                    el: '#artricleList',
+                    data: {
+                        items: result.list
+                    }
+                })
+            }
+        });
+    });
+</script>

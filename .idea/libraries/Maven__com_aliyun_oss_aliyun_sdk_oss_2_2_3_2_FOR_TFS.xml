@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.aliyun.oss:aliyun-sdk-oss:2.2.3.2-FOR-TFS">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/aliyun/oss/aliyun-sdk-oss/2.2.3.2-FOR-TFS/aliyun-sdk-oss-2.2.3.2-FOR-TFS.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/aliyun/oss/aliyun-sdk-oss/2.2.3.2-FOR-TFS/aliyun-sdk-oss-2.2.3.2-FOR-TFS-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/aliyun/oss/aliyun-sdk-oss/2.2.3.2-FOR-TFS/aliyun-sdk-oss-2.2.3.2-FOR-TFS-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

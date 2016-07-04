@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <aop:aspectj-autoproxy/>
+    <!--事务-->
+    <bean id="txManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--事务注解支持-->
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+    <!--数据库连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          destroy-method="close">
+        <property name="driverClassName">
+            <value>com.mysql.jdbc.Driver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:mysql://127.0.0.1:3306/coderknock?useUnicode=true&amp;characterEncoding=UTF-8
+            </value>
+        </property>
+        <property name="username">
+            <value>root</value>
+        </property>
+        <property name="password">
+            <value>admin123</value>
+        </property>
+        <property name="initialSize">
+            <value>2</value>
+        </property>
+        <property name="maxActive">
+            <value>2</value>
+        </property>
+    </bean>
+
+
+    <!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+    <bean name="beetlSqlScannerConfigurer" class="org.beetl.sql.ext.spring4.BeetlSqlScannerConfigurer">
+        <!-- 哪些类可以自动注入 -->
+        <property name="basePackage" value="com.coderknock.server.dao"/>
+        <property name="daoSuffix" value="Dao"/>
+        <property name="sqlManagerFactoryBeanName" value="sqlManagerFactoryBean"/>
+    </bean>
+    <bean id="sqlManagerFactoryBean" class="org.beetl.sql.ext.spring4.SqlManagerFactoryBean">
+        <property name="cs">
+            <bean class="org.beetl.sql.ext.spring4.BeetlSqlDataSource">
+                <property name="masterSource" ref="dataSource"></property>
+            </bean>
+        </property>
+        <property name="dbStyle">
+            <bean class="org.beetl.sql.core.db.MySqlStyle">
+            </bean>
+        </property>
+        <property name="sqlLoader">
+            <bean class="org.beetl.sql.core.ClasspathLoader">
+                <property name="sqlRoot" value="/sql"></property>
+            </bean>
+        </property>
+        <property name="nc">
+            <bean class="org.beetl.sql.core.UnderlinedNameConversion">
+            </bean>
+        </property>
+        <property name="interceptors">
+            <list>
+                <bean class="org.beetl.sql.ext.DebugInterceptor"></bean>
+            </list>
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,43 @@
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">拿客 coderknock</h5>
+                <p><a class="grey-text text-lighten-3" target="_blank" href="http://www.miitbeian.gov.cn/">网站备案号：京ICP备16016846号</a>
+                </p>
+                <p><a class="grey-text text-lighten-3" target="_blank" href="http://materializecss.com">UI使用基于Google
+                    Material Design的现代化响应式前端框架——Materialize</a></p>
+            </div>
+            <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">友情链接</h5>
+                <p><a class="grey-text text-lighten-3" target="_blank" href="http://www.pycoding.com">野猪林——Python、Java技术博客</a>
+                </p>
+                <p><a class="grey-text text-lighten-3" target="_blank" href="http://ludejun.com">陆德俊的博客——Android技术博客</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            <a class="grey-text text-lighten-4 left" target="_blank" href="http://coderknock.com/">© 2016 Copyright
+                拿客</a>
+            <a class="grey-text text-lighten-4 right" target="_blank" href="#!">More Links</a>
+        </div>
+    </div>
+</footer>
+</body>
+<script type="text/javascript">
+    $(function () {
+        $(".dropdown-button").dropdown();
+        $(".button-collapse").sideNav();
+        $("#search").blur(function () {
+            showSearch();
+        });
+    });
+
+    function showSearch() {
+        $("#search-nav").toggle();
+        $("#title-nav").toggle();
+    }
+</script>
+</html>

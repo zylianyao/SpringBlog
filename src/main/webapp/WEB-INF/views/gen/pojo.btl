@@ -1,0 +1,29 @@
+package ${package};
+${imports}
+/*
+* 拿客
+* www.coderknock.com
+* QQ群：213732117
+* 创建时间：${date(),"yyyy年MM月dd日"}
+* ${comment}
+*/
+data class ${className} ${!isEmpty(ext)?": "+ext} (
+	@for(attr in attrs){
+        @if(!isEmpty(attr.comment)){
+        //${attr.comment}
+        @}
+        @if(attr.type=="Integer"){
+            @if(attrLP.last){
+        var ${attr.name}:Int? = null
+            @}else{
+        var ${attr.name}:Int? = null ,
+            @}
+        @}else{
+            @if(attrLP.last){
+        var ${attr.name}:${attr.type}? = null
+            @}else{
+        var ${attr.name}:${attr.type}? = null ,
+            @}
+        @}
+	@}
+)
